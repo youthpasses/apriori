@@ -82,6 +82,7 @@ def keyInT(key, T):
 
 
 def aproiri_gen(keys1):
+	'''连接步'''
 	keys2 = []
 	for k1 in keys1:
 		for k2 in keys1:
