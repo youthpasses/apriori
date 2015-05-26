@@ -34,7 +34,7 @@ def apriori(D, minSup):
 
 
 	keys = cutKeys1
-
+	all_keys = []
 	while keys != []:
 		C = getC(D, keys)
 		cutKeys = getCutKeys(keys, C, minSup, D)
