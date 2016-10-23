@@ -37,7 +37,7 @@ def apriori(D, minSup):
 	all_keys = []
 	while keys != []:
 		C = getC(D, keys)
-		cutKeys = getCutKeys(keys, C, minSup, D)
+		cutKeys = getCutKeys(keys, C, minSup, len(D))
 		for key in cutKeys:
 			all_keys.append(key)
 		keys = aproiri_gen(cutKeys)
@@ -59,16 +59,11 @@ def getC(D, keys):
 		C.append(c)
 	return C
 
-def getCutKeys(keys, C, minSup, D):
+def getCutKeys(keys, C, minSup, length):
 	'''剪枝步'''
-	for key in keys[:]:
-		num = 0
-		for T in D:
-			if keyInT(key, T):
-				num += 1
-		if num * 1.0 / len(D) < minSup:
+	for i, key in enumerate(keys):
+		if float(C[i]) / length < minSup:
 			keys.remove(key)
-	
 	return keys
 
 
